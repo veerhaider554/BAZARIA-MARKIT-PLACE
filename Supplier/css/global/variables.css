@@ -1,0 +1,255 @@
+:root {
+  /* ============================================================
+     BRAND
+     ============================================================ */
+
+  --brand-primary: #e17320;
+  --brand-hover: #d86614;
+  --brand-active: #c95b0d;
+  --brand-soft: #fff0df;
+  --brand-border: #f1bd8b;
+
+  --accent: var(--brand-primary);
+  --accent-hover: var(--brand-hover);
+  --accent-active: var(--brand-active);
+
+
+  /* ============================================================
+     GLOBAL BACKGROUNDS
+     ============================================================ */
+
+  --bg-main: #fbf3e6;
+  --bg-surface: #fffdf9;
+  --bg-surface-light: #f8efe3;
+  --bg-card: #fffaf3;
+
+  --upload-bg: #fbf3e6;
+  --upload-bg-image: none;
+
+  --upload-overlay-start: rgba(251, 243, 230, 0);
+  --upload-overlay-end: rgba(251, 243, 230, 0);
+
+
+  /* ============================================================
+     HEADER
+     ============================================================ */
+
+  --header-bg: rgba(255, 253, 249, 0.96);
+  --header-border: rgba(115, 82, 48, 0.14);
+
+
+  /* ============================================================
+     TEXT
+     ============================================================ */
+
+  --text-main: #211d19;
+  --text-secondary: #332d27;
+  --text-muted: #6d645b;
+  --text-soft: #877d72;
+  --text-disabled: #aaa198;
+  --text-on-accent: #ffffff;
+
+
+  /* ============================================================
+     BORDERS
+     ============================================================ */
+
+  --border-color: #dfd1bf;
+  --border-light: #eadfd0;
+  --border-hover: #d8a06d;
+  --border-focus: var(--accent);
+
+
+  /* ============================================================
+     INPUTS
+     ============================================================ */
+
+  --input-bg: #fffdf9;
+  --input-bg-hover: #fffaf3;
+  --input-bg-focus: #ffffff;
+
+  --input-border: #ded2c3;
+  --input-border-hover: #d9a06c;
+  --input-border-focus: var(--accent);
+
+  --input-placeholder: #aaa198;
+
+
+  /* ============================================================
+     CARDS
+     ============================================================ */
+
+  --card-bg: #fffdf9;
+  --card-bg-secondary: #fbf4e9;
+
+  --card-border: #dfd1bf;
+  --card-border-hover: #e2a36e;
+
+  --card-icon-bg: #fff0df;
+  --card-icon-border: #f1c49c;
+  --card-icon-color: var(--accent);
+
+
+  /* ============================================================
+     PROGRESS
+     ============================================================ */
+
+  --progress-track: #e7dbcc;
+  --progress-fill: var(--accent);
+
+  --step-node-bg: #fffdf9;
+  --step-node-border: #d8ccbc;
+  --step-node-text: #9d9286;
+
+  --step-node-active-bg: var(--accent);
+  --step-node-active-border: var(--accent);
+  --step-node-active-text: #ffffff;
+
+  --step-node-glow:
+    0 0 12px rgba(225, 115, 32, 0.28);
+
+
+  /* ============================================================
+     ACCENT STATES / OVERLAYS
+     ============================================================ */
+
+  --hover-overlay: rgba(120, 85, 50, 0.045);
+  --active-overlay: rgba(120, 85, 50, 0.075);
+
+  --accent-soft: rgba(225, 115, 32, 0.10);
+  --accent-soft-hover: rgba(225, 115, 32, 0.15);
+  --accent-soft-strong: rgba(225, 115, 32, 0.20);
+
+  --focus-ring:
+    0 0 0 3px rgba(225, 115, 32, 0.14);
+
+  --accent-shadow:
+    0 8px 24px rgba(225, 115, 32, 0.18);
+
+
+  /* ============================================================
+     SEMANTIC STATES
+     ============================================================ */
+
+  --success: #1f9d68;
+  --success-light: #39b67e;
+  --success-bg: rgba(31, 157, 104, 0.12);
+
+  --warning: #db9718;
+  --warning-light: #e6a62b;
+  --warning-bg: rgba(219, 151, 24, 0.12);
+
+  --danger: #d94b45;
+  --danger-light: #e66b65;
+  --danger-soft: #ef9b96;
+  --danger-bg: rgba(217, 75, 69, 0.08);
+
+
+  /* ============================================================
+     SHADOWS
+     ============================================================ */
+
+  --shadow-color: rgba(94, 68, 42, 0.12);
+
+  --shadow-sm:
+    0 5px 15px rgba(94, 68, 42, 0.10);
+
+  --shadow-md:
+    0 8px 24px rgba(94, 68, 42, 0.12);
+
+  --shadow-lg:
+    0 12px 30px rgba(94, 68, 42, 0.14);
+
+  --shadow-xl:
+    0 18px 45px rgba(94, 68, 42, 0.16);
+
+
+  /* ============================================================
+     MEDIA / INVERSE
+     ============================================================ */
+
+  --media-overlay: rgba(40, 28, 18, 0.72);
+  --media-bg: #eee5d9;
+
+  --inverse-bg: #211d19;
+  --inverse-text: #ffffff;
+
+
+  /* ============================================================
+     UPLOAD-SPECIFIC VISUAL TOKENS
+     ============================================================ */
+
+  --upload-surface-overlay:
+    rgba(255, 255, 255, 0.72);
+
+  --upload-surface-overlay-hover:
+    rgba(255, 255, 255, 0.86);
+
+  --upload-surface-overlay-active:
+    rgba(255, 255, 255, 0.94);
+
+  --upload-border-soft:
+    rgba(115, 82, 48, 0.10);
+
+  --upload-border-strong:
+    rgba(115, 82, 48, 0.16);
+
+  --upload-neutral-bg:
+    rgba(120, 85, 50, 0.06);
+
+  --upload-neutral-bg-strong:
+    rgba(120, 85, 50, 0.10);
+
+  --upload-media-bg:
+    rgba(40, 28, 18, 0.08);
+
+  --upload-media-dark:
+    rgba(40, 28, 18, 0.18);
+
+  --upload-disabled-bg:
+    rgba(120, 105, 90, 0.42);
+
+  --upload-disabled-border:
+    rgba(120, 105, 90, 0.24);
+
+
+  /* ============================================================
+     RADIUS
+     ============================================================ */
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-round: 999px;
+
+
+  /* ============================================================
+     TYPOGRAPHY
+     ============================================================ */
+
+  --font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+
+  /* ============================================================
+     UPLOAD LAYOUT
+     ============================================================ */
+
+  --upload-max-width: 430px;
+  --page-padding-x: 20px;
+  --page-padding-bottom: 36px;
+
+
+  /* ============================================================
+     TRANSITIONS
+     ============================================================ */
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.20s ease;
+  --transition-slow: 0.25s ease;
+}

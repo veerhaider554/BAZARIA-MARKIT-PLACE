@@ -1,0 +1,64 @@
+/* ============================================================
+   BAZARIA — GLOBAL / APP STYLE
+   style.css
+   ============================================================ */
+
+
+/* ============================================================
+   01. GLOBAL FOUNDATION
+   ============================================================ */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--bg-main);
+  color: var(--text-main);
+
+  font-family: var(--font-family);
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   02. COMMON FOCUS
+   ============================================================ */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[contenteditable="true"]:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.75);
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   03. COMMON UTILITY
+   ============================================================ */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+
+  white-space: nowrap;
+  border: 0;
+}

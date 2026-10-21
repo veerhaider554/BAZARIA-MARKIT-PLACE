@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Bazaria professional product upload system">
+  <title>Bazaria - Upload Product</title>
+
+  <!-- ============================================================
+       BAZARIA — GLOBAL + PAGE STYLES
+       ============================================================ -->
+  <link rel="stylesheet" href="./css/global/reset.css">
+  <link rel="stylesheet" href="./css/global/variables.css">
+  <link rel="stylesheet" href="./css/global/style.css">
+  <link rel="stylesheet" href="./css/pages/upload.css">
+</head>
+
+<body>
+
+  <div class="upload-screen" id="uploadScreen">
+
+    <!-- ==========================================================
+         STEP 0 — PRODUCT TYPE SELECTION (GATEWAY)
+         ========================================================== -->
+    <section
+      class="upload-step is-active"
+      data-step="0"
+      id="uploadStep0"
+      aria-label="Product type selection"
+    >
+      <header class="upload-header">
+        <button type="button" class="back-btn" id="goBackBtn0" aria-label="Go back">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+        <h1 class="header-title">Upload Product</h1>
+        <div class="header-spacer" aria-hidden="true"></div>
+      </header>
+
+      <main class="upload-main">
+        <div class="page-titles">
+          <h2>What would you like<br>to upload?</h2>
+          <p>Choose the type of product<br>you want to add.</p>
+        </div>
+
+        <div class="product-type-cards">
+          <button type="button" class="type-card" id="btnSingleProduct">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </div>
+            <div class="card-text">
+              <h3>Single Product</h3>
+              <p>Upload one product<br>at a time.</p>
+            </div>
+          </button>
+
+          <button type="button" class="type-card" id="btnBulkUpload">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="card-text">
+              <h3>Bulk Upload</h3>
+              <p>Upload multiple products<br>using Excel sheet.</p>
+            </div>
+          </button>
+        </div>
+
+        <div class="footer-info">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <p>You can upload products later<br>from your dashboard.</p>
+        </div>
+      </main>
+    </section>
+
+
+    <!-- ==========================================================
+         STEP 1 — BASIC INFORMATION
+         ========================================================== -->
+    <section
+      class="upload-step"
+      data-step="1"
+      id="uploadStep1"
+      aria-label="Basic product information"
+    >
+      <header class="upload-header-container">
+        <div class="header-top">
+          <button type="button" class="back-btn" id="goBackBtn1" aria-label="Back to product type">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <h1 class="header-title">Basic Information</h1>
+          <div class="header-spacer" aria-hidden="true"></div>
+        </div>
+        <div class="step-progress-wrapper" aria-label="Upload progress">
+          <div class="step-text-counter">STEP 1 OF 7</div>
+          <div class="step-progress-bar">
+            <div class="progress-line-bg" aria-hidden="true"></div>
+            <div class="progress-line-fill" aria-hidden="true"></div>
+            <div class="step-node active" data-progress-step="1"><span>1</span></div>
+            <div class="step-node" data-progress-step="2"><span>2</span></div>
+            <div class="step-node" data-progress-step="3"><span>3</span></div>
+            <div class="step-node" data-progress-step="4"><span>4</span></div>
+            <div class="step-node" data-progress-step="5"><span>5</span></div>
+            <div class="step-node" data-progress-step="6"><span>6</span></div>
+            <div class="step-node" data-progress-step="7"><span>7</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="upload-main">
+        <form id="step1Form" class="step-form" novalidate>
+<!-- ========PRODUCT NAME======== --> 
+          <div class="form-group">
+  <label class="form-label" for="productName">
+    Product Name <span class="required">*</span>
+  </label>
+
+  <input
+    type="text"
+    id="productName"
+    name="productName"
+    class="form-input"
+    placeholder="Enter product name"
+    autocomplete="off"
+    maxlength="120"
+    required
+  >
+</div>
+          
+<!-- =======BRAND SELECTOR======= -->
+
+<div class="form-group">
+  <label class="form-label">
+    Brand <span class="required">*</span>
+  </label>
+
+  <button
+    type="button"
+    class="picker-field"
+    id="productBrandTrigger"
+    aria-haspopup="dialog"
+    aria-controls="brandPicker"
+    aria-expanded="false"
+  >
+    <span
+      class="picker-field-value"
+      id="productBrandDisplay"
+    >
+      Select brand
+    </span>
+
+    <span
+      class="picker-field-arrow"
+      aria-hidden="true"
+    >
+      ›
+    </span>
+  </button>
+
+  <!-- Real value — JS will update this -->
+  <input
+    type="hidden"
+    id="productBrand"
+    name="brand"
+    value=""
+  >
+</div>     
+        
+<!-- ===== CATEGORY SELECTOR====== -->
+
+<div class="form-group">
+  <label class="form-label">
+    Category <span class="required">*</span>
+  </label>
+
+  <button
+    type="button"
+    class="picker-field"
+    id="productCategoryTrigger"
+    aria-haspopup="dialog"
+    aria-controls="categoryPicker"
+    aria-expanded="false"
+  >
+    <span
+      class="picker-field-value"
+      id="productCategoryDisplay"
+    >
+      Select category
+    </span>
+
+    <span
+      class="picker-field-arrow"
+      aria-hidden="true"
+    >
+      ›
+    </span>
+  </button>
+
+  <!-- Real category value -->
+  <input
+    type="hidden"
+    id="productCategory"
+    name="category"
+    value=""
+  >
+
+  <!-- Real sub-category value -->
+  <input
+    type="hidden"
+    id="productSubCategory"
+    name="subCategory"
+    value=""
+  >
+</div>    
+              
+          
+      <div class="form-group">
+            <label class="form-label">Condition <span class="required">*</span></label>
+            <div class="segmented-control" id="conditionGroup" role="group" aria-label="Product condition">
+              <button type="button" class="segment-btn active" data-value="new">New</button>
+              <button type="button" class="segment-btn" data-value="used">Used</button>
+              <button type="button" class="segment-btn" data-value="refurbished">Refurbished</button>
+            </div>
+            <input type="hidden" id="productCondition" name="condition" value="new">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="shortDescription">Short Description <span class="required">*</span></label>
+            <textarea id="shortDescription" name="shortDescription" class="form-textarea" placeholder="Write a short description..." maxlength="120" rows="4" required></textarea>
+            <div class="char-counter" aria-live="polite"><span id="descCharCount">0</span>/120</div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-next">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </main>
+      
+      <!-- ==========================================================
+     FULL-SCREEN BRAND PICKER
+     ========================================================== -->
+
+<div
+  class="picker-screen"
+  id="brandPicker"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="brandPickerTitle"
+  hidden
+>
+  <header class="picker-header">
+
+    <button
+      type="button"
+      class="picker-back-btn"
+      id="closeBrandPicker"
+      aria-label="Back"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+
+    <h2
+      class="picker-title"
+      id="brandPickerTitle"
+    >
+      Select Brand
+    </h2>
+
+    <div class="picker-header-spacer"></div>
+
+  </header>
+
+
+  <main class="picker-main">
+
+    <!-- Search -->
+    <div class="picker-search-wrapper">
+
+      <svg
+        class="picker-search-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+
+      <input
+        type="search"
+        id="brandSearchInput"
+        class="picker-search-input"
+        placeholder="Search brand..."
+        autocomplete="off"
+        aria-label="Search brands"
+      >
+
+      <button
+        type="button"
+        class="picker-search-clear"
+        id="clearBrandSearch"
+        aria-label="Clear brand search"
+        hidden
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <!-- Search Results -->
+    <section
+      class="picker-search-results"
+      id="brandSearchResults"
+      aria-label="Brand search results"
+      hidden
+    >
+      <div class="picker-section-label">
+        Search results
+      </div>
+
+      <div
+        class="picker-result-list"
+        id="brandResultList"
+      ></div>
+    </section>
+
+
+    <!-- Popular Brands -->
+    <section
+      class="picker-section"
+      id="popularBrandsSection"
+      aria-labelledby="popularBrandsTitle"
+    >
+
+      <div class="picker-section-heading">
+        <h3 id="popularBrandsTitle">
+          Popular Brands
+        </h3>
+
+        <button
+          type="button"
+          class="picker-section-action"
+          id="browseAllBrands"
+        >
+          Browse
+        </button>
+      </div>
+
+      <div
+        class="popular-brand-grid"
+        id="popularBrandGrid"
+      >
+
+        <button
+          type="button"
+          class="popular-brand-item"
+          data-brand="adidas"
+        >
+          <span class="popular-brand-icon">A</span>
+          <span>Adidas</span>
+        </button>
+
+        <button
+          type="button"
+          class="popular-brand-item"
+          data-brand="apple"
+        >
+          <span class="popular-brand-icon"></span>
+          <span>Apple</span>
+        </button>
+
+        <button
+          type="button"
+          class="popular-brand-item"
+          data-brand="asus"
+        >
+          <span class="popular-brand-icon">A</span>
+          <span>Asus</span>
+        </button>
+
+        <button
+          type="button"
+          class="popular-brand-item"
+          data-brand="levi"
+        >
+          <span class="popular-brand-icon">L</span>
+          <span>Levi's</span>
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- Browse Brands -->
+    <section
+      class="picker-section brand-browse-section"
+      aria-labelledby="browseBrandsTitle"
+    >
+
+      <div class="picker-section-heading">
+        <h3 id="browseBrandsTitle">
+          Browse Brands
+        </h3>
+      </div>
+
+      <div
+        class="brand-list"
+        id="brandList"
+      >
+
+        <button type="button" class="brand-list-item" data-brand="adidas">
+          <span>Adidas</span>
+          <span class="brand-list-arrow">›</span>
+        </button>
+
+        <button type="button" class="brand-list-item" data-brand="apple">
+          <span>Apple</span>
+          <span class="brand-list-arrow">›</span>
+        </button>
+
+        <button type="button" class="brand-list-item" data-brand="asus">
+          <span>Asus</span>
+          <span class="brand-list-arrow">›</span>
+        </button>
+
+        <button type="button" class="brand-list-item" data-brand="samsung">
+          <span>Samsung</span>
+          <span class="brand-list-arrow">›</span>
+        </button>
+
+        <button type="button" class="brand-list-item" data-brand="xiaomi">
+          <span>Xiaomi</span>
+          <span class="brand-list-arrow">›</span>
+        </button>
+
+        <button type="button" class="brand-list-item" data-brand="nike">
+          <span>Nike</span>
+          <span class="brand-list-arrow">›</span>
+        </button>
+
+        <button type="button" class="brand-list-item" data-brand="bsc">
+          <span>BSC</span>
+          <span class="brand-list-arrow">›</span>
+        </button>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+      <!-- ==========================================================
+     FULL-SCREEN CATEGORY EXPLORER
+     ========================================================== -->
+
+<div
+  class="picker-screen"
+  id="categoryPicker"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="categoryPickerTitle"
+  hidden
+>
+  <header class="picker-header">
+
+    <button
+      type="button"
+      class="picker-back-btn"
+      id="closeCategoryPicker"
+      aria-label="Back"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+
+    <h2
+      class="picker-title"
+      id="categoryPickerTitle"
+    >
+      Select Category
+    </h2>
+
+    <div class="picker-header-spacer"></div>
+
+  </header>
+
+
+  <main class="picker-main">
+
+    <!-- Search -->
+    <div class="picker-search-wrapper">
+
+      <svg
+        class="picker-search-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+
+      <input
+        type="search"
+        id="categorySearchInput"
+        class="picker-search-input"
+        placeholder="Search category..."
+        autocomplete="off"
+        aria-label="Search categories"
+      >
+
+      <button
+        type="button"
+        class="picker-search-clear"
+        id="clearCategorySearch"
+        aria-label="Clear category search"
+        hidden
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <!-- Current Selection -->
+    <section
+      class="category-selected-section"
+      aria-labelledby="selectedCategoryTitle"
+    >
+
+      <div class="picker-section-heading">
+        <h3 id="selectedCategoryTitle">
+          Selected
+        </h3>
+
+        <button
+          type="button"
+          class="picker-section-action"
+          id="clearCategorySelection"
+        >
+          Clear
+        </button>
+      </div>
+
+      <div
+        class="category-selected-path"
+        id="selectedCategoryPath"
+      >
+        No category selected
+      </div>
+
+    </section>
+
+
+    <!-- Search Results -->
+    <section
+      class="picker-search-results"
+      id="categorySearchResults"
+      aria-label="Category search results"
+      hidden
+    >
+
+      <div class="picker-section-label">
+        Search results
+      </div>
+
+      <div
+        class="picker-result-list"
+        id="categoryResultList"
+      ></div>
+
+    </section>
+
+
+    <!-- Browse Categories -->
+    <section
+      class="picker-section category-browse-section"
+      aria-labelledby="browseCategoriesTitle"
+    >
+
+      <div class="picker-section-heading">
+        <h3 id="browseCategoriesTitle">
+          Browse Categories
+        </h3>
+
+        <button
+          type="button"
+          class="picker-section-action"
+          id="searchCategoriesAction"
+        >
+          Search
+        </button>
+      </div>
+
+
+      <div
+        class="category-list"
+        id="categoryList"
+      >
+
+        <!-- Electronics -->
+        <button
+          type="button"
+          class="category-list-item"
+          data-category="electronics"
+          data-category-label="Electronics"
+          data-has-children="true"
+        >
+          <span class="category-list-content">
+            <span class="category-list-title">
+              Electronics
+            </span>
+          </span>
+
+          <span
+            class="category-list-arrow"
+            aria-hidden="true"
+          >
+            ›
+          </span>
+        </button>
+
+
+        <!-- Fashion -->
+        <button
+          type="button"
+          class="category-list-item"
+          data-category="fashion"
+          data-category-label="Fashion"
+          data-has-children="true"
+        >
+          <span class="category-list-content">
+            <span class="category-list-title">
+              Fashion
+            </span>
+          </span>
+
+          <span
+            class="category-list-arrow"
+            aria-hidden="true"
+          >
+            ›
+          </span>
+        </button>
+
+
+        <!-- Home & Lifestyle -->
+        <button
+          type="button"
+          class="category-list-item"
+          data-category="home-lifestyle"
+          data-category-label="Home & Lifestyle"
+          data-has-children="true"
+        >
+          <span class="category-list-content">
+            <span class="category-list-title">
+              Home &amp; Lifestyle
+            </span>
+          </span>
+
+          <span
+            class="category-list-arrow"
+            aria-hidden="true"
+          >
+            ›
+          </span>
+        </button>
+
+
+        <!-- Beauty -->
+        <button
+          type="button"
+          class="category-list-item"
+          data-category="beauty"
+          data-category-label="Beauty"
+          data-has-children="true"
+        >
+          <span class="category-list-content">
+            <span class="category-list-title">
+              Beauty
+            </span>
+          </span>
+
+          <span
+            class="category-list-arrow"
+            aria-hidden="true"
+          >
+            ›
+          </span>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Category Children -->
+    <section
+      class="category-children-section"
+      id="categoryChildrenSection"
+      aria-labelledby="categoryChildrenTitle"
+      hidden
+    >
+
+      <div class="picker-section-heading">
+
+        <h3 id="categoryChildrenTitle">
+          Select
+        </h3>
+
+        <button
+          type="button"
+          class="picker-section-action"
+          id="categoryChildrenBack"
+        >
+          Back
+        </button>
+
+      </div>
+
+
+      <div
+        class="category-children-list"
+        id="categoryChildrenList"
+      ></div>
+
+    </section>
+
+
+    <!-- Final Category Selection -->
+    <section
+      class="category-final-section"
+      id="categoryFinalSection"
+      hidden
+    >
+
+      <button
+        type="button"
+        class="category-select-confirm"
+        id="confirmCategorySelection"
+      >
+        <span>Select Category</span>
+
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </button>
+
+    </section>
+
+  </main>
+</div>
+    </section>
+
+
+    <!-- ==========================================================
+         STEP 2 — PRICING & STOCK
+         ========================================================== -->
+    <section
+      class="upload-step"
+      data-step="2"
+      id="uploadStep2"
+      aria-label="Pricing and stock"
+    >
+      <header class="upload-header-container">
+        <div class="header-top">
+          <button type="button" class="back-btn" id="goBackBtn2" aria-label="Back to basic information">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <h1 class="header-title">Pricing &amp; Stock</h1>
+          <div class="header-spacer" aria-hidden="true"></div>
+        </div>
+        <div class="step-progress-wrapper" aria-label="Upload progress">
+          <div class="step-text-counter">STEP 2 OF 7</div>
+          <div class="step-progress-bar">
+            <div class="progress-line-bg" aria-hidden="true"></div>
+            <div class="progress-line-fill" aria-hidden="true"></div>
+            <div class="step-node" data-progress-step="1"><span>1</span></div>
+            <div class="step-node active" data-progress-step="2"><span>2</span></div>
+            <div class="step-node" data-progress-step="3"><span>3</span></div>
+            <div class="step-node" data-progress-step="4"><span>4</span></div>
+            <div class="step-node" data-progress-step="5"><span>5</span></div>
+            <div class="step-node" data-progress-step="6"><span>6</span></div>
+            <div class="step-node" data-progress-step="7"><span>7</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="upload-main">
+        <form id="step2Form" class="step-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="costPrice">Cost Price (PKR) <span class="required">*</span></label>
+            <input type="number" id="costPrice" name="costPrice" class="form-input" placeholder="0.00" min="0" step="0.01" inputmode="decimal" required>
+            <small class="form-hint">Your buying price.</small>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sellingPrice">Selling Price (PKR) <span class="required">*</span></label>
+            <input type="number" id="sellingPrice" name="sellingPrice" class="form-input" placeholder="0.00" min="0" step="0.01" inputmode="decimal" required>
+            <small class="form-hint">Your customer selling price before any discount.</small>
+          </div>
+
+          <div id="profitPreview" class="profit-preview" aria-live="polite">
+            <span class="profit-label">Estimated Profit:</span>
+            <span id="calcProfit" class="profit-value">PKR 0</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="discountPrice">Discount Price (PKR)</label>
+            <input type="number" id="discountPrice" name="discountPrice" class="form-input" placeholder="0.00" min="0" step="0.01" inputmode="decimal">
+            <small class="form-hint">Final customer price after discount. Leave empty if there is no discount.</small>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="stockQty">Stock Quantity <span class="required">*</span></label>
+            <input type="number" id="stockQty" name="stockQty" class="form-input" placeholder="0" min="0" step="1" inputmode="numeric" required>
+            <small class="form-hint">Total available stock.</small>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="skuInput">SKU <span class="form-optional">(Optional)</span></label>
+            <div class="sku-input-group">
+              <input type="text" id="skuInput" name="sku" class="form-input" placeholder="Enter SKU code" maxlength="50" autocomplete="off">
+              <button type="button" id="btnGenerateSKU" class="sku-auto-btn">Auto</button>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-next">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </main>
+    </section>
+
+
+    <!-- ==========================================================
+         STEP 3 — IMAGES & MEDIA
+         ========================================================== -->
+    <section
+      class="upload-step"
+      data-step="3"
+      id="uploadStep3"
+      aria-label="Product images and media"
+    >
+      <header class="upload-header-container">
+        <div class="header-top">
+          <button type="button" class="back-btn" id="goBackBtn3" aria-label="Back to pricing and stock">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <h1 class="header-title">Images &amp; Media</h1>
+          <div class="header-spacer" aria-hidden="true"></div>
+        </div>
+        <div class="step-progress-wrapper" aria-label="Upload progress">
+          <div class="step-text-counter">STEP 3 OF 7</div>
+          <div class="step-progress-bar">
+            <div class="progress-line-bg" aria-hidden="true"></div>
+            <div class="progress-line-fill" aria-hidden="true"></div>
+            <div class="step-node" data-progress-step="1"><span>1</span></div>
+            <div class="step-node" data-progress-step="2"><span>2</span></div>
+            <div class="step-node active" data-progress-step="3"><span>3</span></div>
+            <div class="step-node" data-progress-step="4"><span>4</span></div>
+            <div class="step-node" data-progress-step="5"><span>5</span></div>
+            <div class="step-node" data-progress-step="6"><span>6</span></div>
+            <div class="step-node" data-progress-step="7"><span>7</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="upload-main scrollable-media-step">
+        <form id="step3Form" class="step-form" novalidate>
+          <div class="form-group">
+            <label class="form-label">Product Images <span class="required">*</span></label>
+            <p class="form-subtitle">Upload up to 10 images. The first image is the default cover.</p>
+
+            <div class="upload-dropzone" id="imageDropzone" role="button" tabindex="0" aria-label="Upload product images">
+              <input type="file" id="imageInput" name="images" accept="image/jpeg,image/png,image/webp" multiple hidden>
+              <div class="dropzone-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </div>
+              <p class="dropzone-text">Tap to upload images or <strong>drag &amp; drop</strong></p>
+              <small class="dropzone-hint">0/10 images selected · JPG, PNG or WEBP · Up to 5MB each</small>
+            </div>
+
+            <div class="media-preview-grid" id="imagePreviewGrid" aria-live="polite" aria-label="Selected product images"></div>
+          </div>
+
+          <div class="form-actions media-actions">
+            <button type="submit" class="btn-next">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </main>
+    </section>
+
+
+    <!-- ==========================================================
+         STEP 4 — PRODUCT DETAILS
+         ========================================================== -->
+    <section
+      class="upload-step"
+      data-step="4"
+      id="uploadStep4"
+      aria-label="Product details"
+    >
+      <header class="upload-header-container">
+        <div class="header-top">
+          <button type="button" class="back-btn" id="goBackBtn4" aria-label="Back to images">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <h1 class="header-title">Product Details</h1>
+          <div class="header-spacer" aria-hidden="true"></div>
+        </div>
+        <div class="step-progress-wrapper" aria-label="Upload progress">
+          <div class="step-text-counter">STEP 4 OF 7</div>
+          <div class="step-progress-bar">
+            <div class="progress-line-bg" aria-hidden="true"></div>
+            <div class="progress-line-fill" aria-hidden="true"></div>
+            <div class="step-node" data-progress-step="1"><span>1</span></div>
+            <div class="step-node" data-progress-step="2"><span>2</span></div>
+            <div class="step-node" data-progress-step="3"><span>3</span></div>
+            <div class="step-node active" data-progress-step="4"><span>4</span></div>
+            <div class="step-node" data-progress-step="5"><span>5</span></div>
+            <div class="step-node" data-progress-step="6"><span>6</span></div>
+            <div class="step-node" data-progress-step="7"><span>7</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="upload-main">
+        <form id="step4Form" class="step-form" novalidate>
+
+          <!-- 01. Rich Text Description -->
+          <div class="form-group">
+            <label class="form-label">Description <span class="required">*</span></label>
+
+            <div class="rich-editor-wrapper">
+              <div class="editor-toolbar" role="toolbar" aria-label="Description formatting">
+                <button type="button" class="tool-btn" data-command="bold" aria-label="Bold"><b>B</b></button>
+                <button type="button" class="tool-btn" data-command="italic" aria-label="Italic"><i>I</i></button>
+                <button type="button" class="tool-btn" data-command="underline" aria-label="Underline"><u>U</u></button>
+                <div class="toolbar-divider" aria-hidden="true"></div>
+
+                <button type="button" class="tool-btn" data-command="insertUnorderedList" aria-label="Bullet List">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="9" y1="6" x2="20" y2="6"></line>
+                    <line x1="9" y1="12" x2="20" y2="12"></line>
+                    <line x1="9" y1="18" x2="20" y2="18"></line>
+                    <circle cx="4" cy="6" r="2"></circle>
+                    <circle cx="4" cy="12" r="2"></circle>
+                    <circle cx="4" cy="18" r="2"></circle>
+                  </svg>
+                </button>
+
+                <button type="button" class="tool-btn" data-command="insertOrderedList" aria-label="Numbered List">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="10" y1="6" x2="21" y2="6"></line>
+                    <line x1="10" y1="12" x2="21" y2="12"></line>
+                    <line x1="10" y1="18" x2="21" y2="18"></line>
+                    <path d="M4 6h1v4"></path>
+                    <path d="M4 10h2"></path>
+                    <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <div
+                id="richEditor"
+                class="editor-content"
+                contenteditable="true"
+                role="textbox"
+                aria-multiline="true"
+                aria-label="Product description"
+                data-placeholder="Write detailed description about your product..."
+              ></div>
+
+              <div class="editor-footer">
+                <span class="char-count" aria-live="polite"><span id="longDescCount">0</span>/2000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02. Dynamic Specifications -->
+          <div class="form-group specs-group">
+            <label class="form-label">Specifications</label>
+            <div id="specsContainer" class="specs-container"></div>
+
+            <button type="button" id="btnAddSpec" class="btn-add-text">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Add Specification
+            </button>
+          </div>
+
+          <!-- 03. Smart Tags -->
+          <div class="form-group tags-group">
+            <label class="form-label" for="tagInput">Tags</label>
+            <div class="tags-wrapper" id="tagsWrapper">
+              <div id="tagsList" class="tags-list" aria-live="polite"></div>
+              <input type="text" id="tagInput" class="tag-input-field" placeholder="Enter tags separated by comma" autocomplete="off" maxlength="30">
+            </div>
+            <p class="input-hint">e.g. mobile, smartphone, android · up to 10 tags</p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-next">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </main>
+    </section>
+
+
+    <!-- ==========================================================
+         STEP 5 — SHIPPING INFORMATION
+         Note: HTML structure is ready; Step 5 JS logic will be
+         implemented separately after this cleanup pass.
+         ========================================================== -->
+    <section
+      class="upload-step"
+      data-step="5"
+      id="uploadStep5"
+      aria-label="Shipping details"
+    >
+      <header class="upload-header-container">
+        <div class="header-top">
+          <button type="button" class="back-btn" id="goBackBtn5" aria-label="Back to product details">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <h1 class="header-title">Shipping Information</h1>
+          <div class="header-spacer" aria-hidden="true"></div>
+        </div>
+
+        <div class="step-progress-wrapper" aria-label="Upload progress">
+          <div class="step-text-counter">STEP 5 OF 7</div>
+          <div class="step-progress-bar">
+            <div class="progress-line-bg" aria-hidden="true"></div>
+            <div class="progress-line-fill" aria-hidden="true"></div>
+            <div class="step-node" data-progress-step="1"><span>1</span></div>
+            <div class="step-node" data-progress-step="2"><span>2</span></div>
+            <div class="step-node" data-progress-step="3"><span>3</span></div>
+            <div class="step-node" data-progress-step="4"><span>4</span></div>
+            <div class="step-node active" data-progress-step="5"><span>5</span></div>
+            <div class="step-node" data-progress-step="6"><span>6</span></div>
+            <div class="step-node" data-progress-step="7"><span>7</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="upload-main">
+        <form id="step5Form" class="step-form" novalidate>
+
+          <!-- 01. Product Weight -->
+          <div class="form-group">
+            <label class="form-label" for="productWeight">Weight (kg) <span class="required">*</span></label>
+            <input type="number" id="productWeight" name="weight" class="form-input" placeholder="0.00" min="0" step="0.01" inputmode="decimal" required>
+            <small class="form-hint">Product weight in kg.</small>
+          </div>
+
+          <!-- 02. Product Dimensions -->
+          <div class="form-group">
+            <label class="form-label">Dimensions (cm)</label>
+            <div class="dimensions-grid">
+              <div class="dim-box">
+                <label class="visually-hidden" for="dimLength">Length in cm</label>
+                <input type="number" id="dimLength" name="length" class="form-input dim-input" placeholder="0.0" min="0" step="0.1" inputmode="decimal">
+                <small class="form-hint dimension-label">Length</small>
+              </div>
+
+              <span class="dimension-separator" aria-hidden="true">×</span>
+
+              <div class="dim-box">
+                <label class="visually-hidden" for="dimWidth">Width in cm</label>
+                <input type="number" id="dimWidth" name="width" class="form-input dim-input" placeholder="0.0" min="0" step="0.1" inputmode="decimal">
+                <small class="form-hint dimension-label">Width</small>
+              </div>
+
+              <span class="dimension-separator" aria-hidden="true">×</span>
+
+              <div class="dim-box">
+                <label class="visually-hidden" for="dimHeight">Height in cm</label>
+                <input type="number" id="dimHeight" name="height" class="form-input dim-input" placeholder="0.0" min="0" step="0.1" inputmode="decimal">
+                <small class="form-hint dimension-label">Height</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03. Shipping Type -->
+          <div class="form-group">
+            <label class="form-label" for="shippingType">Shipping Type <span class="required">*</span></label>
+            <div class="select-wrapper">
+              <select id="shippingType" name="shippingType" class="form-select" required>
+                <option value="" selected disabled>Select shipping type</option>
+                <option value="flat_rate">Flat Rate (Standard)</option>
+                <option value="calculated">Calculated at Checkout</option>
+                <option value="local_pickup">Local Pickup Only</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 04. Processing Time -->
+          <div class="form-group">
+            <label class="form-label" for="processingTime">Processing Time <span class="required">*</span></label>
+            <div class="select-wrapper">
+              <select id="processingTime" name="processingTime" class="form-select" required>
+                <option value="" selected disabled>Select processing time</option>
+                <option value="1">Same day</option>
+                <option value="2">1-2 business days</option>
+                <option value="3">3-5 business days</option>
+                <option value="7">Ships within 1 week</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-next">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </main>
+    </section>
+
+
+    
+<!-- ==========================================================
+         STEP 6 — MORE OPTIONS
+========================================================== -->
+   
+    <section
+      class="upload-step"
+      data-step="6"
+      id="uploadStep6"
+      aria-label="More options"
+    >
+      <header class="upload-header-container">
+        <div class="header-top">
+          <button type="button" class="back-btn" id="goBackBtn6" aria-label="Back to shipping details">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <h1 class="header-title">More Options</h1>
+          <div class="header-spacer" aria-hidden="true"></div>
+        </div>
+
+        <div class="step-progress-wrapper" aria-label="Upload progress">
+          <div class="step-text-counter">STEP 6 OF 7</div>
+          <div class="step-progress-bar">
+            <div class="progress-line-bg" aria-hidden="true"></div>
+            <div class="progress-line-fill" aria-hidden="true"></div>
+            <div class="step-node" data-progress-step="1"><span>1</span></div>
+            <div class="step-node" data-progress-step="2"><span>2</span></div>
+            <div class="step-node" data-progress-step="3"><span>3</span></div>
+            <div class="step-node" data-progress-step="4"><span>4</span></div>
+            <div class="step-node" data-progress-step="5"><span>5</span></div>
+            <div class="step-node active" data-progress-step="6"><span>6</span></div>
+            <div class="step-node" data-progress-step="7"><span>7</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="upload-main">
+        <form id="step6Form" class="step-form" novalidate>
+
+          <!-- 01. Product Variants -->
+          <div class="form-group variants-group">
+            <label class="form-label">Product Variants</label>
+            
+            <button type="button" id="btnAddVariant" class="btn-add-text">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Add Variant</span>
+            </button>
+            
+            <small class="form-hint">Add size, color, or other variants</small>
+            <div id="variantsContainer" class="variants-container"></div>
+          </div>
+
+          <!-- 02. Warranty (Optional) -->
+          <div class="form-group">
+            <label class="form-label" for="productWarranty">Warranty <span class="form-optional">(Optional)</span></label>
+            <input type="text" id="productWarranty" name="warranty" class="form-input" placeholder="Enter warranty information" maxlength="100" autocomplete="off">
+          </div>
+
+          <!-- 03. Return Policy (Optional) -->
+          <div class="form-group">
+            <label class="form-label" for="returnPolicy">Return Policy <span class="form-optional">(Optional)</span></label>
+            <input type="text" id="returnPolicy" name="returnPolicy" class="form-input" placeholder="Enter return policy" maxlength="100" autocomplete="off">
+          </div>
+
+          <!-- 04. Minimum Order Qty -->
+          <div class="form-group">
+            <label class="form-label" for="minOrderQty">Minimum Order Qty <span class="required">*</span></label>
+            <input type="number" id="minOrderQty" name="minOrderQty" class="form-input" value="1" min="1" step="1" inputmode="numeric" required>
+          </div>
+
+          <!-- 05. Cash on Delivery Toggle -->
+          <div class="form-group toggle-group">
+            <div class="toggle-info">
+              <label class="form-label" for="codToggle">Cash on Delivery</label>
+              <small class="form-hint">Allow cash on delivery</small>
+            </div>
+            <label class="switch-toggle">
+              <input type="checkbox" id="codToggle" name="isCodAllowed" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-next">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </main>
+    </section>
+
+                        
+
+    <!-- ==========================================================
+     STEP 7 — REVIEW & PUBLISH
+     ----------------------------------------------------------
+     Final review screen for the complete product.
+     Data source:
+     - Step 1 → Basic Information
+     - Step 2 → Pricing & Stock
+     - Step 3 → Images & Media
+     - Step 4 → Product Details
+     - Step 5 → Shipping Information
+     - Step 6 → More Options
+     ========================================================== -->
+<section
+  class="upload-step"
+  data-step="7"
+  id="uploadStep7"
+  aria-label="Review and publish product"
+>
+  <header class="upload-header-container">
+    <div class="header-top">
+
+      <button
+        type="button"
+        class="back-btn"
+        id="goBackBtn7"
+        aria-label="Back to more options"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </button>
+
+      <h1 class="header-title">Review &amp; Publish</h1>
+
+      <div class="header-spacer" aria-hidden="true"></div>
+    </div>
+
+    <div
+      class="step-progress-wrapper"
+      aria-label="Upload progress"
+    >
+      <div class="step-text-counter">STEP 7 OF 7</div>
+
+      <div class="step-progress-bar">
+
+        <div
+          class="progress-line-bg"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="progress-line-fill"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="step-node"
+          data-progress-step="1"
+        >
+          <span>1</span>
+        </div>
+
+        <div
+          class="step-node"
+          data-progress-step="2"
+        >
+          <span>2</span>
+        </div>
+
+        <div
+          class="step-node"
+          data-progress-step="3"
+        >
+          <span>3</span>
+        </div>
+
+        <div
+          class="step-node"
+          data-progress-step="4"
+        >
+          <span>4</span>
+        </div>
+
+        <div
+          class="step-node"
+          data-progress-step="5"
+        >
+          <span>5</span>
+        </div>
+
+        <div
+          class="step-node"
+          data-progress-step="6"
+        >
+          <span>6</span>
+        </div>
+
+        <div
+          class="step-node active"
+          data-progress-step="7"
+        >
+          <span>7</span>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+
+  <main class="upload-main step7-main">
+
+    <div class="step7-content">
+
+
+      <!-- ======================================================
+           01. PRODUCT PREVIEW
+           ====================================================== -->
+
+      <section
+        class="preview-section"
+        aria-labelledby="productPreviewTitle"
+      >
+
+        <h2
+          id="productPreviewTitle"
+          class="section-title"
+        >
+          Product Preview
+        </h2>
+
+        <article
+          class="product-preview-card"
+          id="productPreviewCard"
+        >
+
+          <!-- Main Product Image -->
+          <div class="product-preview-media">
+
+            <img
+              id="previewProductImage"
+              class="preview-product-image"
+              src=""
+              alt="Product preview"
+            >
+
+          </div>
+
+
+          <!-- Product Summary -->
+          <div class="product-preview-info">
+
+            <h3
+              id="previewProductName"
+              class="preview-product-name"
+            >
+              Product Name
+            </h3>
+
+            <p
+              id="previewProductMeta"
+              class="preview-product-meta"
+            >
+              Brand · Category
+            </p>
+
+            <div class="preview-price-row">
+
+              <strong
+                id="previewProductPrice"
+                class="preview-product-price"
+              >
+                PKR 0
+              </strong>
+
+              <span
+                id="previewProductDiscount"
+                class="preview-product-discount"
+                hidden
+              >
+                PKR 0
+              </span>
+
+            </div>
+
+            <div class="preview-stock-row">
+
+              <span id="previewProductCondition">
+                Condition: —
+              </span>
+
+              <span id="previewProductStock">
+                Stock: 0
+              </span>
+
+            </div>
+
+            <div
+              id="previewProductSKU"
+              class="preview-product-sku"
+            >
+              SKU: —
+            </div>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- ======================================================
+           02. UPLOAD SUMMARY
+           ------------------------------------------------------
+           Each row can later navigate back to its source step.
+           ====================================================== -->
+
+      <section
+        class="summary-section"
+        aria-labelledby="uploadSummaryTitle"
+      >
+
+        <div class="summary-section-header">
+
+          <h2
+            id="uploadSummaryTitle"
+            class="section-title"
+          >
+            Upload Summary
+          </h2>
+
+        </div>
+
+
+        <div
+          class="upload-summary-list"
+          id="uploadSummaryList"
+        >
+
+
+          <!-- Step 1 -->
+          <button
+            type="button"
+            class="summary-row"
+            data-summary-step="1"
+            id="summaryStep1"
+          >
+
+            <span
+              class="summary-status-icon is-complete"
+              aria-hidden="true"
+            >
+              ✓
+            </span>
+
+            <span class="summary-row-title">
+              Basic Information
+            </span>
+
+            <span
+              class="summary-row-status"
+              data-summary-status
+            >
+              Completed
+            </span>
+
+            <span
+              class="summary-row-arrow"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+
+          </button>
+
+
+          <!-- Step 2 -->
+          <button
+            type="button"
+            class="summary-row"
+            data-summary-step="2"
+            id="summaryStep2"
+          >
+
+            <span
+              class="summary-status-icon is-complete"
+              aria-hidden="true"
+            >
+              ✓
+            </span>
+
+            <span class="summary-row-title">
+              Pricing &amp; Stock
+            </span>
+
+            <span
+              class="summary-row-status"
+              data-summary-status
+            >
+              Completed
+            </span>
+
+            <span
+              class="summary-row-arrow"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+
+          </button>
+
+
+          <!-- Step 3 -->
+          <button
+            type="button"
+            class="summary-row"
+            data-summary-step="3"
+            id="summaryStep3"
+          >
+
+            <span
+              class="summary-status-icon is-complete"
+              aria-hidden="true"
+            >
+              ✓
+            </span>
+
+            <span class="summary-row-title">
+              Images &amp; Media
+            </span>
+
+            <span
+              class="summary-row-status"
+              data-summary-status
+            >
+              Completed
+            </span>
+
+            <span
+              class="summary-row-arrow"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+
+          </button>
+
+
+          <!-- Step 4 -->
+          <button
+            type="button"
+            class="summary-row"
+            data-summary-step="4"
+            id="summaryStep4"
+          >
+
+            <span
+              class="summary-status-icon is-complete"
+              aria-hidden="true"
+            >
+              ✓
+            </span>
+
+            <span class="summary-row-title">
+              Product Details
+            </span>
+
+            <span
+              class="summary-row-status"
+              data-summary-status
+            >
+              Completed
+            </span>
+
+            <span
+              class="summary-row-arrow"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+
+          </button>
+
+
+          <!-- Step 5 -->
+          <button
+            type="button"
+            class="summary-row"
+            data-summary-step="5"
+            id="summaryStep5"
+          >
+
+            <span
+              class="summary-status-icon is-complete"
+              aria-hidden="true"
+            >
+              ✓
+            </span>
+
+            <span class="summary-row-title">
+              Shipping Information
+            </span>
+
+            <span
+              class="summary-row-status"
+              data-summary-status
+            >
+              Completed
+            </span>
+
+            <span
+              class="summary-row-arrow"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+
+          </button>
+
+
+          <!-- Step 6 -->
+          <button
+            type="button"
+            class="summary-row"
+            data-summary-step="6"
+            id="summaryStep6"
+          >
+
+            <span
+              class="summary-status-icon"
+              id="summaryStep6Icon"
+              aria-hidden="true"
+            >
+              !
+            </span>
+
+            <span class="summary-row-title">
+              More Options
+            </span>
+
+            <span
+              class="summary-row-status"
+              id="summaryStep6Status"
+            >
+              Checking...
+            </span>
+
+            <span
+              class="summary-row-arrow"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           03. FINAL VALIDATION GATE
+           ====================================================== -->
+
+      <section
+        class="validation-section"
+        aria-labelledby="finalValidationTitle"
+      >
+
+        <h2
+          id="finalValidationTitle"
+          class="section-title"
+        >
+          Final Validation Gate
+        </h2>
+
+
+        <div
+          class="validation-card"
+          id="finalValidationCard"
+        >
+
+          <div
+            class="validation-status-grid"
+            id="validationStatusGrid"
+          >
+
+            <span
+              class="validation-item"
+              data-validation-step="1"
+              data-status="pending"
+            >
+              <span
+                class="validation-icon"
+                aria-hidden="true"
+              >
+                —
+              </span>
+              <span>Basic Info</span>
+            </span>
+
+
+            <span
+              class="validation-item"
+              data-validation-step="2"
+              data-status="pending"
+            >
+              <span
+                class="validation-icon"
+                aria-hidden="true"
+              >
+                —
+              </span>
+              <span>Pricing</span>
+            </span>
+
+
+            <span
+              class="validation-item"
+              data-validation-step="3"
+              data-status="pending"
+            >
+              <span
+                class="validation-icon"
+                aria-hidden="true"
+              >
+                —
+              </span>
+              <span>Images</span>
+            </span>
+
+
+            <span
+              class="validation-item"
+              data-validation-step="4"
+              data-status="pending"
+            >
+              <span
+                class="validation-icon"
+                aria-hidden="true"
+              >
+                —
+              </span>
+              <span>Details</span>
+            </span>
+
+
+            <span
+              class="validation-item"
+              data-validation-step="5"
+              data-status="pending"
+            >
+              <span
+                class="validation-icon"
+                aria-hidden="true"
+              >
+                —
+              </span>
+              <span>Shipping</span>
+            </span>
+
+
+            <span
+              class="validation-item"
+              data-validation-step="6"
+              data-status="pending"
+            >
+              <span
+                class="validation-icon"
+                aria-hidden="true"
+              >
+                —
+              </span>
+              <span>More Options</span>
+            </span>
+
+          </div>
+
+
+          <p
+            id="validationMessage"
+            class="validation-message"
+            aria-live="polite"
+          >
+            Checking product information...
+          </p>
+
+
+          <div
+            id="validationErrorBox"
+            class="validation-error-box"
+            hidden
+          >
+
+            <strong>
+              Please resolve the following:
+            </strong>
+
+            <ul
+              id="validationErrorList"
+            ></ul>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           04. ACTIONS
+           ====================================================== -->
+
+      <section
+        class="publish-actions"
+        aria-label="Product actions"
+      >
+
+        <button
+          type="button"
+          id="btnUploadProduct"
+          class="btn-publish"
+          disabled
+        >
+          <span class="btn-publish-text">
+            Upload Product
+          </span>
+
+          <span
+            class="btn-publish-loading"
+            hidden
+          >
+            Uploading...
+          </span>
+        </button>
+
+
+        <button
+          type="button"
+          id="btnSaveDraft"
+          class="btn-draft"
+        >
+          <span class="btn-draft-text">
+            Save as Draft
+          </span>
+
+          <span
+            class="btn-draft-loading"
+            hidden
+          >
+            Saving...
+          </span>
+        </button>
+
+      </section>
+
+
+      <!-- ======================================================
+           05. FINAL INFORMATION
+           ====================================================== -->
+
+      <p
+        class="publish-note"
+        id="publishNote"
+      >
+        Product will be reviewed before publication.
+      </p>
+
+
+    </div>
+
+  </main>
+</section>
+
+  </div>
+
+  <!-- ============================================================
+       BAZARIA — UPLOAD SYSTEM SCRIPT
+       ============================================================ -->
+<script src="./js/upload/state.js" defer></script>
+<script src="./js/upload/validation.js" defer></script>
+<script src="./js/upload/navigation.js" defer></script>
+<script src="./js/upload/step0.js" defer></script>
+<script src="./js/upload/step1.js" defer></script>
+<script src="./js/upload/step2.js" defer></script>
+<script src="./js/upload/step3.js" defer></script>
+<script src="./js/upload/step4.js" defer></script>
+<script src="./js/upload/variants.js" defer></script>
+<script src="./js/upload/step5.js" defer></script>
+<script src="./js/upload/step6.js" defer></script>
+<script src="./js/upload/preview.js" defer></script>
+<script src="./js/upload/draft.js" defer></script>
+<script src="./js/upload/upload.js" defer></script>
+
+
+
+
+</body>
+</html>
